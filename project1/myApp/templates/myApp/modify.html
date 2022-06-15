@@ -1,0 +1,50 @@
+<!-- 부모 파일 상속 -->
+{% extends 'myApp/base_student.html' %}
+
+{% block content %}
+<h1> 학생 수정 </h1>
+<form action="/myApp/modifyCon/" method="POST" style="width:50%; margin:10px auto">
+    {% csrf_token %}
+
+    <!-- student.id 는 히든필드의 value 값으로 지정 -->
+    <!--  화면 표시는 되지 않음   -->
+    <input type="hidden" name="id" value="{{student.id}}">
+
+
+    <div class="form-group" >
+        <input type="text" name="name" class="form-control"
+         value="{{student.s_name}}">
+    </div>
+    <div class="form-group" >
+        <input type="text" name="major" class="form-control" value="{{student.s_major}}">
+    </div>
+    <div class="form-group" >
+        <input type="number" name="age" class="form-control" value="{{student.s_age}}">
+    </div>
+    <div class="form-group" >
+        <input type="number" name="grade" class="form-control" value="{{student.s_grade}}">
+    </div>
+    <!-- 라디오버튼 처리 -->
+    <div class="form-group text-left">
+        <b> 성별 : </b>
+        {% if student.s_gender == "남" %}
+        <input type="radio" class="form-radio-inline" id="gender1" name="gender" value="남" checked>
+        <label for="gender1">남자</label>
+        <input type="radio" class="form-radio-inline" id="gender2" name="gender" value="여">
+        <label for="gender2">여자</label>
+        {% else %}
+        <input type="radio" class="form-radio-inline" id="gender1" name="gender" value="남" >
+        <label for="gender1">남자</label>
+        <input type="radio" class="form-radio-inline" id="gender2" name="gender" value="여" checked>
+        <label for="gender2">여자</label>
+        {% endif %}
+    </div>
+
+
+    <div class="form-group" >
+        <input type="submit" value="등록" class="btn btn-success">
+        <input type="reset" value="취소" class="btn btn-info">
+    </div>
+</form>
+
+{% endblock %}

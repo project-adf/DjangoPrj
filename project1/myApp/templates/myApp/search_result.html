@@ -1,0 +1,33 @@
+<!-- 부모 파일 상속 -->
+{% extends 'myApp/base_city.html' %}
+
+{% block content %}
+<h1>검색 결과</h1>
+<hr>
+
+<!--검색 결과가 있다면-->
+{% if city_list %}
+<table class="table table-dark table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>NAME</th>
+      <th>POPULATION</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in city_list %}
+    <tr>
+      <td>{{row.id}}</td>
+      <td>{{row.name}}</td>
+      <td>{{row.population}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<!--검색 결과가 없다면-->
+{% else %}
+  <h2 class="text-center" > Not Find</h2>
+{% endif %}
+
+{% endblock %}

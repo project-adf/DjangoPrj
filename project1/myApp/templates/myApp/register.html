@@ -1,0 +1,34 @@
+<!-- 부모 html 상속 -->
+{% extends 'myApp/base_student.html' %}
+
+<!-- 교체 내용 영역 -->
+{% block content %}
+<h1> 학생 추가 </h1>
+<form action="/myApp/registerCon/" method="POST" style="width:50%; margin:10px auto">
+    {% csrf_token %}
+    <div class="form-group" >
+        <input type="text" name="name" required placeholder="이름" class="form-control">
+    </div>
+    <div class="form-group" >
+        <input type="text" name="major" required placeholder="학과" class="form-control">
+    </div>
+    <div class="form-group" >
+        <input type="number" name="age" required placeholder="나이" class="form-control">
+    </div>
+    <div class="form-group" >
+        <input type="number" name="grade" required placeholder="학점" class="form-control">
+    </div>
+    <div class="form-group" >
+        <b>성별</b>
+        <input type="radio" name="gender" value="남" id="gender1">
+        <label for="gender1">남자</label>
+        <input type="radio" name="gender" value="여" id="gender2">
+        <label for="gender2">여자</label>
+    </div>
+    <div class="form-group" >
+        <input type="submit" value="등록" class="btn btn-success">
+        <input type="reset" value="취소" class="btn btn-info">
+    </div>
+</form>
+
+{% endblock  %}

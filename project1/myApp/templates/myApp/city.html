@@ -1,0 +1,27 @@
+<!-- 부모 파일 상속 -->
+{% extends 'myApp/base_city.html' %}
+
+{% block content %}
+<h1>전체 목록 보기</h1>
+<hr>
+
+<table class="table table-dark table-striped" style = "margin-bottom:50px">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>POPULATION</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in city_list %}
+      <tr>
+        <td>{{row.id}}</td>
+        <td>{{row.name}}</td>
+        <td>{{row.population}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}
